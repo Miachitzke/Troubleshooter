@@ -39,7 +39,6 @@ namespace Troubleshooter
             this.txbUsuario = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnGravar = new System.Windows.Forms.Button();
-            this.btnAtualizar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.cxbUserAdmin = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,24 +46,31 @@ namespace Troubleshooter
             this.label4 = new System.Windows.Forms.Label();
             this.txbSenha = new System.Windows.Forms.TextBox();
             this.dtgConsulta = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txbID = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.gboxCadastro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctVisib)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctNoVisib)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgConsulta)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnDeletar
             // 
-            this.btnDeletar.Location = new System.Drawing.Point(392, 297);
+            this.btnDeletar.Location = new System.Drawing.Point(178, 26);
             this.btnDeletar.Name = "btnDeletar";
             this.btnDeletar.Size = new System.Drawing.Size(75, 23);
             this.btnDeletar.TabIndex = 19;
             this.btnDeletar.Text = "Deletar";
             this.btnDeletar.UseVisualStyleBackColor = true;
+            this.btnDeletar.Click += new System.EventHandler(this.btnDeletar_Click);
             // 
             // btnConsulta
             // 
-            this.btnConsulta.Location = new System.Drawing.Point(311, 297);
+            this.btnConsulta.Location = new System.Drawing.Point(209, 138);
             this.btnConsulta.Name = "btnConsulta";
             this.btnConsulta.Size = new System.Drawing.Size(75, 23);
             this.btnConsulta.TabIndex = 18;
@@ -75,12 +81,12 @@ namespace Troubleshooter
             // gboxCadastro
             // 
             this.gboxCadastro.Controls.Add(this.pctVisib);
+            this.gboxCadastro.Controls.Add(this.btnConsulta);
             this.gboxCadastro.Controls.Add(this.pctNoVisib);
             this.gboxCadastro.Controls.Add(this.txbFNome);
             this.gboxCadastro.Controls.Add(this.txbUsuario);
             this.gboxCadastro.Controls.Add(this.label1);
             this.gboxCadastro.Controls.Add(this.btnGravar);
-            this.gboxCadastro.Controls.Add(this.btnAtualizar);
             this.gboxCadastro.Controls.Add(this.label2);
             this.gboxCadastro.Controls.Add(this.cxbUserAdmin);
             this.gboxCadastro.Controls.Add(this.label3);
@@ -149,15 +155,6 @@ namespace Troubleshooter
             this.btnGravar.UseVisualStyleBackColor = true;
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
-            // btnAtualizar
-            // 
-            this.btnAtualizar.Location = new System.Drawing.Point(211, 138);
-            this.btnAtualizar.Name = "btnAtualizar";
-            this.btnAtualizar.Size = new System.Drawing.Size(69, 23);
-            this.btnAtualizar.TabIndex = 11;
-            this.btnAtualizar.Text = "Atualizar";
-            this.btnAtualizar.UseVisualStyleBackColor = true;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -216,20 +213,71 @@ namespace Troubleshooter
             this.dtgConsulta.AllowUserToAddRows = false;
             this.dtgConsulta.AllowUserToDeleteRows = false;
             this.dtgConsulta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgConsulta.Location = new System.Drawing.Point(308, 18);
+            this.dtgConsulta.Location = new System.Drawing.Point(308, 12);
             this.dtgConsulta.Name = "dtgConsulta";
             this.dtgConsulta.ReadOnly = true;
             this.dtgConsulta.RowTemplate.Height = 25;
-            this.dtgConsulta.Size = new System.Drawing.Size(398, 269);
+            this.dtgConsulta.Size = new System.Drawing.Size(398, 249);
             this.dtgConsulta.TabIndex = 16;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.txbID);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.btnDeletar);
+            this.groupBox1.Location = new System.Drawing.Point(12, 195);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(290, 131);
+            this.groupBox1.TabIndex = 20;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Remover usuário";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 63);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(268, 45);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "Atenção: A remoção de um usuário não pode ser \r\ndesfeita e a ação gera um registr" +
+    "o.\r\nClique \"Deletar\" apenas se tiver certeza.";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txbID
+            // 
+            this.txbID.Location = new System.Drawing.Point(92, 27);
+            this.txbID.Name = "txbID";
+            this.txbID.Size = new System.Drawing.Size(67, 23);
+            this.txbID.TabIndex = 21;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 30);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(80, 15);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "ID do usuário:";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(654, 314);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(52, 15);
+            this.linkLabel1.TabIndex = 21;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Retornar";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // frmCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(718, 338);
-            this.Controls.Add(this.btnDeletar);
-            this.Controls.Add(this.btnConsulta);
+            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gboxCadastro);
             this.Controls.Add(this.dtgConsulta);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -240,7 +288,10 @@ namespace Troubleshooter
             ((System.ComponentModel.ISupportInitialize)(this.pctVisib)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctNoVisib)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgConsulta)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -255,7 +306,6 @@ namespace Troubleshooter
         private System.Windows.Forms.TextBox txbUsuario;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnGravar;
-        private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox cxbUserAdmin;
         private System.Windows.Forms.Label label3;
@@ -263,6 +313,10 @@ namespace Troubleshooter
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txbSenha;
         private System.Windows.Forms.DataGridView dtgConsulta;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txbID;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
-

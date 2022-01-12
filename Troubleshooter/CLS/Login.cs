@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Troubleshooter.Model;
 
 namespace Troubleshooter.CLS
 {
     class Login
     {
-        public bool vld=true;
+        GlobalVar gv = new();
         public bool tm=false;
-        public String msg="";
+        public String msg="";        
         SqlCommand cmd = new SqlCommand();
         Banco cn = new Banco();
         SqlDataReader dr;
@@ -21,17 +18,18 @@ namespace Troubleshooter.CLS
             cmd.CommandText = "select * from usuarios where usuario = @usuario and senha = @senha";
             cmd.Parameters.AddWithValue("@usuario", usuario);
             cmd.Parameters.AddWithValue("@senha", senha);
-            
-            
 
             try
             {
                 cmd.Connection = cn.Conectar();
                 dr = cmd.ExecuteReader();
                 
-                if (dr.HasRows) 
+                if (dr.HasRows)
                 {
-                    tm = true; 
+                    dr.Read();
+                    gv.userLgd = dr.GetInt32(0);
+                    if (dr.GetInt32(5) == 1) { gv.vld = true; }
+                    tm = true;
                 }
             }
             catch(SqlException)
@@ -40,5 +38,5 @@ namespace Troubleshooter.CLS
             }
             return tm;
         }
-    }
+   }
 }

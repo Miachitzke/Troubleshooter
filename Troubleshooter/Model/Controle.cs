@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 using Troubleshooter.CLS;
 
 namespace Troubleshooter.Model
@@ -16,18 +13,14 @@ namespace Troubleshooter.Model
         public string nome;
         public string senha;
         public string dt_cadastro;
-        public int tbs_criados;
         public int adm_user;
-
-        
         public bool tm;
-        public bool vld = false;
+
         public String msg = ""; 
         public bool acesso(String usuario, String senha)
         {
                 Login loginCF = new Login();            
                 tm = loginCF.vrfLogin(usuario, senha);
-                vld = loginCF.vld;
                 if (!loginCF.msg.Equals(null))
                 {
                     this.msg = loginCF.msg;
@@ -36,9 +29,22 @@ namespace Troubleshooter.Model
             return tm;
         }
 
-            
+        internal static void abreTBS(object obj)
+        {
+            Application.Run(new frmCadTroubles());
+        }
 
-            public bool gravarUsuario()
+        internal static void abreConsulta(object obj)
+        {
+            Application.Run(new frmConsulta());
+        }
+
+        internal static void abreCadUser(object obj)
+        {
+            Application.Run(new frmCadastro());
+        }
+
+        public bool gravarUsuario()
             {
             Banco banco = new Banco();
 
@@ -51,19 +57,17 @@ namespace Troubleshooter.Model
             command.CommandType = CommandType.Text;
 
             command.CommandText = "insert into usuarios " +
-                "values (@usuario, @nome, @senha, @dt_cadastro, @tbs_criados, @adm_user);";
+                "values (@usuario, @nome, @senha, @dt_cadastro, @adm_user);";
             command.Parameters.Add("@usuario", SqlDbType.VarChar);
             command.Parameters.Add("@nome", SqlDbType.VarChar);
             command.Parameters.Add("@senha", SqlDbType.VarChar);
             command.Parameters.Add("@dt_cadastro", SqlDbType.VarChar);
-            command.Parameters.Add("@tbs_criados", SqlDbType.Int);
             command.Parameters.Add("@adm_user", SqlDbType.Int);
             command.Parameters[0].Value = user;
             command.Parameters[1].Value = nome;
             command.Parameters[2].Value = senha;
             command.Parameters[3].Value = dt_cadastro;
-            command.Parameters[4].Value = tbs_criados;
-            command.Parameters[5].Value = adm_user;     
+            command.Parameters[4].Value = adm_user;     
 
             try
             {
@@ -81,7 +85,39 @@ namespace Troubleshooter.Model
                 banco.Desconectar();
             }
         }
-        
+
+        public bool excluirUsuario()
+        {
+            Banco bd = new Banco();
+
+            SqlConnection cn = bd.Conectar();
+            SqlTransaction tran = cn.BeginTransaction();
+            SqlCommand command = new SqlCommand();
+
+            command.Connection = cn;
+            command.Transaction = tran;
+            command.CommandType = CommandType.Text;
+            command.CommandText = "delete from usuarios where id = @id;";
+            command.Parameters.Add("@id", SqlDbType.VarChar);            
+            command.Parameters[0].Value = id;
+
+            try
+            {
+                command.ExecuteNonQuery();
+                tran.Commit();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                tran.Rollback();
+                return false;
+            }
+            finally
+            {
+                bd.Desconectar();
+            }
+        }
+
         public Controle consultaUsuario(int id)
         {
             Banco bd = new Banco();
@@ -89,9 +125,7 @@ namespace Troubleshooter.Model
             try
             {
                 SqlConnection cn = bd.Conectar();
-                SqlCommand command = new SqlCommand("select * from usuarios",
-                    cn);
-
+                SqlCommand command = new SqlCommand("select * from usuarios", cn);
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
@@ -103,8 +137,7 @@ namespace Troubleshooter.Model
                         nome = reader.GetString(2);
                         senha = reader.GetString(3);
                         dt_cadastro = reader.GetString(4);
-                        tbs_criados = reader.GetInt32(5);
-                        adm_user = reader.GetInt32(6);                 
+                        adm_user = reader.GetInt32(5);                 
                         return this;
                     }
                 }
