@@ -39,6 +39,9 @@ namespace Troubleshooter
             this.dtgConsulta.Columns["senha"].Visible = false;
             this.dtgConsulta.Columns["dt_cadastro"].Visible = false;
             this.dtgConsulta.Columns["adm_user"].Visible = false;
+            dtgConsulta.Columns["id"].HeaderText = "User ID";
+            dtgConsulta.Columns["usuario"].HeaderText = "Usuário";
+            dtgConsulta.Columns["nome"].HeaderText = "Nome completo";
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
@@ -106,6 +109,7 @@ namespace Troubleshooter
                 MessageBox.Show("Erro ao executar a exclusão!");
             }
             txbID.Text = "";
+            btnConsulta_Click(sender, e);
         }
         private void pctVisib_Click(object sender, EventArgs e)
         {

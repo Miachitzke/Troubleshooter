@@ -65,11 +65,17 @@ namespace Troubleshooter
                 selectChave(cxbChaveBSC.Text);
                 ctrlINC.consultaProblemas(chave_bsc, txbBusca.Text);
                 dtgBusca.DataSource = gv.dt;
-            }
-            dtgBusca.Columns["id"].Visible = false;
+            }            
             dtgBusca.Columns["tbs_definitiva"].Visible = false;
             dtgBusca.Columns["tbs_console"].Visible = false;
-            dtgBusca.Columns["fk_usuario"].Visible = false;
+            //dtgBusca.Columns["fk_usuario"].Visible = false;
+            dtgBusca.Columns["rsm_problema"].HeaderText = "Resumo";
+            dtgBusca.Columns["problema"].HeaderText = "Problema detalhado";
+            dtgBusca.Columns["cat_problema"].HeaderText = "Categoria";
+            dtgBusca.Columns["cod_erro"].HeaderText = "Código do erro";
+            dtgBusca.Columns["troubleshoot"].HeaderText = "Solução";
+            dtgBusca.Columns["cod_console"].HeaderText = "Linhas de código";
+            dtgBusca.Columns["nome"].HeaderText = "Registrado por";
         }
 
         public void selectChave(string Chave)

@@ -18,7 +18,6 @@ namespace Troubleshooter.CLS
 
         SqlCommand cmd = new SqlCommand();
         Banco bd = new Banco();
-        SqlDataReader dr;
         GlobalVar gv = new GlobalVar();        
 
         public bool gravarINC()
@@ -79,9 +78,10 @@ namespace Troubleshooter.CLS
             try
             {
                 SqlConnection cn = bd.Conectar();
-                //cmd = new SqlCommand("select * from probl_conhecidos where " + chave_bsc + " like @busca", cn);
                 cmd = new SqlCommand("select probl_conhecidos.rsm_problema,problema,cat_problema,cod_erro,troubleshoot,tbs_definitiva,tbs_console,cod_console, usuarios.nome" +
                     " from probl_conhecidos, usuarios where " + chave_bsc + " like @busca and usuarios.id = probl_conhecidos.fk_usuario", cn);
+                //a consulta funciona majoritariamente devido a um milagre, na duvida não altere
+                //se for alterar teste no ssms se da retorno antes!!
                 cmd.Parameters.AddWithValue("@busca", "%" + busca + "%");
 
                 cmd.ExecuteNonQuery();

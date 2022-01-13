@@ -31,7 +31,6 @@ namespace Troubleshooter
             }
             catch (Exception)
             {
-                //faz algo se deu erro
                 return null;
             }
 
@@ -40,15 +39,13 @@ namespace Troubleshooter
         public SqlConnection Desconectar()
         {
             try
-            {
-                //tentar fazer algo
+            {                
                 conexao();
                 cn.Close();
                 return null;
             }
             catch (Exception)
             {
-                //faz algo se deu erro
                 return cn;
             }
         }

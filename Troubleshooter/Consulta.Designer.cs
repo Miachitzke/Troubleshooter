@@ -173,6 +173,9 @@ namespace Troubleshooter
             this.dtgBusca.AllowUserToAddRows = false;
             this.dtgBusca.AllowUserToDeleteRows = false;
             this.dtgBusca.AllowUserToOrderColumns = true;
+            this.dtgBusca.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgBusca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgBusca.Location = new System.Drawing.Point(2, 86);
             this.dtgBusca.Name = "dtgBusca";
