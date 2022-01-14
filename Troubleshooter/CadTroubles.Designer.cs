@@ -66,6 +66,7 @@ namespace Troubleshooter
             this.btnSalvar.TabIndex = 26;
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            this.btnSalvar.MouseHover += new System.EventHandler(this.btnSalvar_MouseHover);
             // 
             // txbCodErro
             // 
@@ -217,6 +218,7 @@ namespace Troubleshooter
             this.btnAddCMD.TabIndex = 0;
             this.btnAddCMD.UseVisualStyleBackColor = true;
             this.btnAddCMD.Click += new System.EventHandler(this.btnAddCMD_Click);
+            this.btnAddCMD.MouseHover += new System.EventHandler(this.btnAddCMD_MouseHover);
             // 
             // chbSoluPerm
             // 

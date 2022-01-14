@@ -90,7 +90,6 @@ namespace Troubleshooter
                 case "Código do erro": chave_bsc = "cod_erro"; break;
                 case "Solução": chave_bsc = "troubleshoot"; break;
                 case "Criador por": chave_bsc = "fk_usuario"; break;
-
             }
         }
 
@@ -161,6 +160,24 @@ namespace Troubleshooter
         private void abreAuth(object obj)
         {
             Application.Run(new frmAuth());
+        }
+
+        private void btnBusca_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip ttp = new();
+            ttp.SetToolTip(btnBusca, "Buscar");
+        }
+
+        private void btnGerar_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip ttp = new();
+            ttp.SetToolTip(btnGerar, "Gerar script");
+        }
+
+        private void btnLogout_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip ttp = new();
+            ttp.SetToolTip(btnLogout, "Desconectar");
         }
     }
 }

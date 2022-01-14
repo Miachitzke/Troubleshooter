@@ -67,6 +67,7 @@ namespace Troubleshooter
             this.btnGerar.TabIndex = 16;
             this.btnGerar.UseVisualStyleBackColor = true;
             this.btnGerar.Click += new System.EventHandler(this.btnGerar_Click);
+            this.btnGerar.MouseHover += new System.EventHandler(this.btnGerar_MouseHover);
             // 
             // btnBusca
             // 
@@ -78,6 +79,7 @@ namespace Troubleshooter
             this.btnBusca.TabIndex = 14;
             this.btnBusca.UseVisualStyleBackColor = true;
             this.btnBusca.Click += new System.EventHandler(this.btnBusca_Click);
+            this.btnBusca.MouseHover += new System.EventHandler(this.btnBusca_MouseHover);
             // 
             // groupBox1
             // 
@@ -179,6 +181,7 @@ namespace Troubleshooter
             this.btnLogout.TabIndex = 25;
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            this.btnLogout.MouseHover += new System.EventHandler(this.btnLogout_MouseHover);
             // 
             // frmConsulta
             // 

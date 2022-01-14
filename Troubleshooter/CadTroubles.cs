@@ -143,5 +143,17 @@ namespace Troubleshooter
                 btnCMDSalvar_Click(sender, e);
             }
         }
+
+        private void btnAddCMD_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip ttp = new();
+            ttp.SetToolTip(btnAddCMD, "Registrar comandos DOS");
+        }
+
+        private void btnSalvar_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip ttp = new();
+            ttp.SetToolTip(btnSalvar, "Registrar incidente");
+        }
     }
 }
