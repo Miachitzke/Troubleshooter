@@ -69,10 +69,6 @@ namespace Troubleshooter
                 pnCMD.Visible = false;
             }
         }
-        private void btnGerar_Click(object sender, EventArgs e)
-        {
-
-        }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             atribuiCampos();
@@ -94,7 +90,20 @@ namespace Troubleshooter
             {
                 MessageBox.Show("Erro ao gravar!");
             }
+            limpaCampos();
 
+        }
+
+        private void limpaCampos()
+        {
+            rctCMD.Clear();
+            rctDefeito.Clear();
+            rctSolucao.Clear();
+            txbCategoria.Clear();
+            txbCodErro.Clear();
+            txbRsmProblema.Clear();
+            chbGenCMD.Checked = false;
+            chbSoluPerm.Checked = false;
         }
 
         private void atribuiCampos()
@@ -124,8 +133,7 @@ namespace Troubleshooter
         }
 
         private void frmCadTroubles_Load(object sender, EventArgs e)
-        {
-            
+        {            
         }
 
         private void rctCMD_KeyPress(object sender, KeyPressEventArgs e)
