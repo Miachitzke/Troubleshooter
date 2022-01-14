@@ -24,7 +24,17 @@ namespace Troubleshooter.Model
         }
 
         private static DataTable _dt = new();
-        public DataTable dt { get => _dt; set => _dt = value; }      
+        public DataTable dt { get => _dt; set => _dt = value; }
 
+        internal void limpaVar()
+        {
+            userLgd =0;
+            _userLgd = 0;
+            vld = false;
+            _vld = false;
+            dt.Clear();
+            _dt.Clear();
+
+        }
     }
 }

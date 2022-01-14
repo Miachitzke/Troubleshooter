@@ -151,6 +151,7 @@ namespace Troubleshooter
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            gv.limpaVar();
             this.Close();
             frm1 = new Thread(abreAuth);            
             frm1.SetApartmentState(ApartmentState.STA);
