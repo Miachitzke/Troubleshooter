@@ -40,7 +40,7 @@ namespace Troubleshooter
             if (e.KeyChar == 13)
             {
                 btnEntrar_Click(sender, e);
-            }            
+            }
         }
     }
 }

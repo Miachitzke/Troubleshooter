@@ -32,17 +32,16 @@ namespace Troubleshooter
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConsulta));
             this.lblCMDGEN = new System.Windows.Forms.Label();
             this.btnGerar = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.btnBusca = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.btnAddINC = new System.Windows.Forms.Button();
-            this.lblID = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblDefTbs = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.cxbChaveBSC = new System.Windows.Forms.ComboBox();
             this.txbBusca = new System.Windows.Forms.TextBox();
             this.dtgBusca = new System.Windows.Forms.DataGridView();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgBusca)).BeginInit();
             this.SuspendLayout();
@@ -50,37 +49,30 @@ namespace Troubleshooter
             // lblCMDGEN
             // 
             this.lblCMDGEN.AutoSize = true;
-            this.lblCMDGEN.Location = new System.Drawing.Point(213, 57);
+            this.lblCMDGEN.Location = new System.Drawing.Point(191, 57);
             this.lblCMDGEN.Name = "lblCMDGEN";
-            this.lblCMDGEN.Size = new System.Drawing.Size(92, 15);
+            this.lblCMDGEN.Size = new System.Drawing.Size(82, 15);
             this.lblCMDGEN.TabIndex = 18;
-            this.lblCMDGEN.Text = "CMD Gerável: --";
+            this.lblCMDGEN.Text = "CMD Gerável: ";
             // 
             // btnGerar
             // 
             this.btnGerar.Enabled = false;
             this.btnGerar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGerar.Image = global::Troubleshooter.Properties.Resources.new_file;
-            this.btnGerar.Location = new System.Drawing.Point(343, 5);
+            this.btnGerar.Image = global::Troubleshooter.Properties.Resources.codegen;
+            this.btnGerar.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnGerar.Location = new System.Drawing.Point(343, 12);
             this.btnGerar.Name = "btnGerar";
             this.btnGerar.Size = new System.Drawing.Size(40, 40);
             this.btnGerar.TabIndex = 16;
             this.btnGerar.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(331, 57);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 15);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Alterador por:";
+            this.btnGerar.Click += new System.EventHandler(this.btnGerar_Click);
             // 
             // btnBusca
             // 
             this.btnBusca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBusca.Image = global::Troubleshooter.Properties.Resources.bsc;
-            this.btnBusca.Location = new System.Drawing.Point(297, 5);
+            this.btnBusca.Location = new System.Drawing.Point(297, 12);
             this.btnBusca.Name = "btnBusca";
             this.btnBusca.Size = new System.Drawing.Size(40, 40);
             this.btnBusca.TabIndex = 14;
@@ -91,9 +83,9 @@ namespace Troubleshooter
             // 
             this.groupBox1.Controls.Add(this.btnAddUser);
             this.groupBox1.Controls.Add(this.btnAddINC);
-            this.groupBox1.Location = new System.Drawing.Point(448, 0);
+            this.groupBox1.Location = new System.Drawing.Point(403, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(254, 57);
+            this.groupBox1.Size = new System.Drawing.Size(253, 57);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Opções avançadas";
@@ -115,32 +107,23 @@ namespace Troubleshooter
             this.btnAddINC.Name = "btnAddINC";
             this.btnAddINC.Size = new System.Drawing.Size(139, 23);
             this.btnAddINC.TabIndex = 0;
-            this.btnAddINC.Text = "Inserir l Alterar solução";
+            this.btnAddINC.Text = "Registrar  solução";
             this.btnAddINC.UseVisualStyleBackColor = true;
             this.btnAddINC.Click += new System.EventHandler(this.btnAddINC_Click);
             // 
-            // lblID
+            // lblDefTbs
             // 
-            this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(12, 57);
-            this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(34, 15);
-            this.lblID.TabIndex = 17;
-            this.lblID.Text = "ID: --";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(63, 57);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(132, 15);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Solução permanente: --";
+            this.lblDefTbs.AutoSize = true;
+            this.lblDefTbs.Location = new System.Drawing.Point(12, 57);
+            this.lblDefTbs.Name = "lblDefTbs";
+            this.lblDefTbs.Size = new System.Drawing.Size(125, 15);
+            this.lblDefTbs.TabIndex = 7;
+            this.lblDefTbs.Text = "Solução permanente:  ";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 18);
+            this.label8.Location = new System.Drawing.Point(12, 25);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(64, 15);
             this.label8.TabIndex = 21;
@@ -156,14 +139,14 @@ namespace Troubleshooter
             "Código do erro",
             "Solução",
             "Criador por"});
-            this.cxbChaveBSC.Location = new System.Drawing.Point(82, 15);
+            this.cxbChaveBSC.Location = new System.Drawing.Point(82, 22);
             this.cxbChaveBSC.Name = "cxbChaveBSC";
             this.cxbChaveBSC.Size = new System.Drawing.Size(103, 23);
             this.cxbChaveBSC.TabIndex = 22;
             // 
             // txbBusca
             // 
-            this.txbBusca.Location = new System.Drawing.Point(191, 15);
+            this.txbBusca.Location = new System.Drawing.Point(191, 22);
             this.txbBusca.Name = "txbBusca";
             this.txbBusca.Size = new System.Drawing.Size(100, 23);
             this.txbBusca.TabIndex = 23;
@@ -183,21 +166,33 @@ namespace Troubleshooter
             this.dtgBusca.RowTemplate.Height = 25;
             this.dtgBusca.Size = new System.Drawing.Size(709, 246);
             this.dtgBusca.TabIndex = 24;
+            this.dtgBusca.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgBusca_CellContentClick);
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Image = global::Troubleshooter.Properties.Resources.logout1;
+            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnLogout.Location = new System.Drawing.Point(662, 18);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(40, 40);
+            this.btnLogout.TabIndex = 25;
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // frmConsulta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(714, 335);
+            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.dtgBusca);
             this.Controls.Add(this.txbBusca);
             this.Controls.Add(this.lblCMDGEN);
             this.Controls.Add(this.cxbChaveBSC);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnGerar);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.lblID);
+            this.Controls.Add(this.lblDefTbs);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnBusca);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -215,15 +210,14 @@ namespace Troubleshooter
         private System.Windows.Forms.Button btnBusca;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnGerar;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.Label lblCMDGEN;
         private System.Windows.Forms.Button btnAddINC;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblDefTbs;
         private System.Windows.Forms.Button btnAddUser;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cxbChaveBSC;
         private System.Windows.Forms.TextBox txbBusca;
         private System.Windows.Forms.DataGridView dtgBusca;
+        private System.Windows.Forms.Button btnLogout;
     }
 }

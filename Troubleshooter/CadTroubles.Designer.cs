@@ -29,6 +29,7 @@ namespace Troubleshooter
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadTroubles));
             this.btnSalvar = new System.Windows.Forms.Button();
             this.txbCodErro = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,10 +47,10 @@ namespace Troubleshooter
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddCMD = new System.Windows.Forms.Button();
-            this.chbGenCMD = new System.Windows.Forms.CheckBox();
             this.chbSoluPerm = new System.Windows.Forms.CheckBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.txbCategoria = new System.Windows.Forms.TextBox();
+            this.chbGenCMD = new System.Windows.Forms.CheckBox();
             this.gboxSolucao.SuspendLayout();
             this.gboxProblema.SuspendLayout();
             this.pnCMD.SuspendLayout();
@@ -152,7 +153,7 @@ namespace Troubleshooter
             this.pnCMD.Controls.Add(this.btnCMDSalvar);
             this.pnCMD.Controls.Add(this.rctCMD);
             this.pnCMD.Controls.Add(this.label7);
-            this.pnCMD.Location = new System.Drawing.Point(113, 40);
+            this.pnCMD.Location = new System.Drawing.Point(98, 19);
             this.pnCMD.Name = "pnCMD";
             this.pnCMD.Size = new System.Drawing.Size(500, 310);
             this.pnCMD.TabIndex = 34;
@@ -185,6 +186,7 @@ namespace Troubleshooter
             this.rctCMD.Size = new System.Drawing.Size(494, 247);
             this.rctCMD.TabIndex = 1;
             this.rctCMD.Text = "";
+            this.rctCMD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rctCMD_KeyPress);
             // 
             // label7
             // 
@@ -216,21 +218,10 @@ namespace Troubleshooter
             this.btnAddCMD.UseVisualStyleBackColor = true;
             this.btnAddCMD.Click += new System.EventHandler(this.btnAddCMD_Click);
             // 
-            // chbGenCMD
-            // 
-            this.chbGenCMD.AutoSize = true;
-            this.chbGenCMD.Location = new System.Drawing.Point(12, 70);
-            this.chbGenCMD.Name = "chbGenCMD";
-            this.chbGenCMD.Size = new System.Drawing.Size(95, 19);
-            this.chbGenCMD.TabIndex = 31;
-            this.chbGenCMD.Text = "CMD Gerável";
-            this.chbGenCMD.UseVisualStyleBackColor = true;
-            this.chbGenCMD.CheckedChanged += new System.EventHandler(this.chbGenCMD_CheckedChanged);
-            // 
             // chbSoluPerm
             // 
             this.chbSoluPerm.AutoSize = true;
-            this.chbSoluPerm.Location = new System.Drawing.Point(113, 70);
+            this.chbSoluPerm.Location = new System.Drawing.Point(12, 70);
             this.chbSoluPerm.Name = "chbSoluPerm";
             this.chbSoluPerm.Size = new System.Drawing.Size(135, 19);
             this.chbSoluPerm.TabIndex = 32;
@@ -255,6 +246,16 @@ namespace Troubleshooter
             this.txbCategoria.Size = new System.Drawing.Size(115, 23);
             this.txbCategoria.TabIndex = 34;
             // 
+            // chbGenCMD
+            // 
+            this.chbGenCMD.AutoSize = true;
+            this.chbGenCMD.Location = new System.Drawing.Point(153, 72);
+            this.chbGenCMD.Name = "chbGenCMD";
+            this.chbGenCMD.Size = new System.Drawing.Size(15, 14);
+            this.chbGenCMD.TabIndex = 35;
+            this.chbGenCMD.UseVisualStyleBackColor = true;
+            this.chbGenCMD.Visible = false;
+            // 
             // frmCadTroubles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -264,7 +265,6 @@ namespace Troubleshooter
             this.Controls.Add(this.txbCategoria);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.chbSoluPerm);
-            this.Controls.Add(this.chbGenCMD);
             this.Controls.Add(this.btnAddCMD);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.txbCodErro);
@@ -272,6 +272,8 @@ namespace Troubleshooter
             this.Controls.Add(this.gboxSolucao);
             this.Controls.Add(this.gboxProblema);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.chbGenCMD);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCadTroubles";
             this.Text = "Cadastro de incidentes";
             this.Load += new System.EventHandler(this.frmCadTroubles_Load);
@@ -298,7 +300,6 @@ namespace Troubleshooter
         private System.Windows.Forms.RichTextBox rctDefeito;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddCMD;
-        private System.Windows.Forms.CheckBox chbGenCMD;
         private System.Windows.Forms.CheckBox chbSoluPerm;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Panel pnCMD;
@@ -307,5 +308,6 @@ namespace Troubleshooter
         private System.Windows.Forms.RichTextBox rctCMD;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txbCategoria;
+        private System.Windows.Forms.CheckBox chbGenCMD;
     }
 }

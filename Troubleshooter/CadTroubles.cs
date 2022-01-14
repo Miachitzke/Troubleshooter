@@ -127,5 +127,13 @@ namespace Troubleshooter
         {
             
         }
+
+        private void rctCMD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                btnCMDSalvar_Click(sender, e);
+            }
+        }
     }
 }

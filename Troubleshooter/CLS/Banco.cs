@@ -11,7 +11,7 @@ namespace Troubleshooter
     public class Banco
     {
 
-        private string stringConexao = "Data Source=DESKTOP-R31K1HV;Initial Catalog=proj_base;Integrated Security=True";
+        private string stringConexao = "Data Source=localhost;Initial Catalog=proj_base;Integrated Security=True";
 
         private SqlConnection cn;
 

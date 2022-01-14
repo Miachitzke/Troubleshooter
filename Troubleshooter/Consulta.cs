@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Data;
 using System.Data.SqlClient;
 using System.Threading;
@@ -17,6 +18,8 @@ namespace Troubleshooter
         SqlDataReader dr;
         DataTable dt = new();
         string chave_bsc;
+        string COMMA;
+        string nmBAT;
         public frmConsulta()
         {
             InitializeComponent();
@@ -68,7 +71,6 @@ namespace Troubleshooter
             }            
             dtgBusca.Columns["tbs_definitiva"].Visible = false;
             dtgBusca.Columns["tbs_console"].Visible = false;
-            //dtgBusca.Columns["fk_usuario"].Visible = false;
             dtgBusca.Columns["rsm_problema"].HeaderText = "Resumo";
             dtgBusca.Columns["problema"].HeaderText = "Problema detalhado";
             dtgBusca.Columns["cat_problema"].HeaderText = "Categoria";
@@ -90,6 +92,75 @@ namespace Troubleshooter
                 case "Criador por": chave_bsc = "fk_usuario"; break;
 
             }
+        }
+
+        private void dtgBusca_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            nmBAT = dtgBusca.CurrentRow.Cells[3].FormattedValue.ToString();
+            string def_tbs = dtgBusca.CurrentRow.Cells[5].FormattedValue.ToString();
+            string cmd_gen = dtgBusca.CurrentRow.Cells[6].FormattedValue.ToString();
+            COMMA = dtgBusca.CurrentRow.Cells[7].FormattedValue.ToString();
+            if (def_tbs == "1") { lblDefTbs.Text = "Solução permanente: Sim"; } else { lblDefTbs.Text = "Solução permanente: Não"; }
+            if (cmd_gen == "1") 
+            { 
+                lblCMDGEN.Text = "CMD Gerável: Sim";
+                btnGerar.Enabled = true;
+            } 
+            else
+            { 
+                lblCMDGEN.Text = "CMD Gerável: Não";
+                btnGerar.Enabled = false;
+            }
+
+        }
+        private void btnGerar_Click(object sender, EventArgs e)
+        {
+            GerarBAT();
+            MessageBox.Show("Solução gerada com sucesso.");
+        }
+
+        private void GerarBAT()
+        {
+            verfDir();
+            try
+            {
+
+                StreamWriter sw = new StreamWriter("C:\\Temp\\Fix "+ nmBAT +".bat");                
+                sw.WriteLine(COMMA);
+                sw.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Executing finally block.");
+            }
+        }
+
+        private void verfDir()
+        {
+            string path = @"c:\Temp";
+           
+                if (!Directory.Exists(path))
+                {
+                Directory.CreateDirectory("C:\\Temp");
+                }
+
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frm1 = new Thread(abreAuth);            
+            frm1.SetApartmentState(ApartmentState.STA);
+            frm1.Start();
+        }
+
+        private void abreAuth(object obj)
+        {
+            Application.Run(new frmAuth());
         }
     }
 }
